@@ -31,35 +31,51 @@
 						<small>Robby & Tom</small>
 					</p>
 				</section>
-				
+
 				<section>
 					<section><h2>Docker Intro - Tom</h2></section>
 					<section>Basic Introduction</section>
 					<section data-background="images/DockerVersions.png" data-background-size="contain"></section>
 				</section>
 
-				<section>					
-					<h2>Dockerize UI - Robby</h2>
+				<section>
+					<section>
+						<h2>Dockerize UI - Robby</h2>
+					</section>
+                    <section>
+						<pre>
+							<code data-trim>
+docker run
+-d
+--rm
+--name intellij
+-e DISPLAY=10.0.75.1:0
+-v //c/users/robby:/home/dev
+joengenduvel/docker-intellij
+intellij
+						</code>
+						</pre>
+                    </section>
 				</section>
 
-				<section>					
+				<section>
 					<h2>Linux Command Line Tools - Tom</h2>
 				</section>
 
-				<section>					
+				<section>
 					<h2>Docker Family, Sisters and Daughters - Robby</h2>
 					<p>Over Siblings en Dockerception</p>
 				</section>
 
-				<section>					
+				<section>
 					<h2>Mapped Volumes vs Volumes From - Robby</h2>
 				</section>
 
-				<section>					
+				<section>
 					<h2>Windows Container vs Linux Containers - Tom</h2>
 				</section>
 
-				<section>					
+				<section>
 					<h2>Build Server with Docker Compose - Robby</h2>
 				</section>
 			</div>
