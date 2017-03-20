@@ -20,6 +20,23 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<link rel="stylesheet" href="css/terminal.css">
+		<script src="term.js"></script>
+		<script src="vertxshell.js"></script>
+		<script type="text/javascript">
+  			window.addEventListener('load', function () {
+				var url;
+				url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
+
+				var terminals = document.getElementsByTagName("terminal");
+				new VertxTerm(url, {
+				cols: 130,
+				rows: 22
+			    },
+				terminals[0]);
+			});
+		</script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -31,51 +48,59 @@
 						<small>Robby & Tom</small>
 					</p>
 				</section>
-
+				
 				<section>
 					<section><h2>Docker Intro - Tom</h2></section>
 					<section>Basic Introduction</section>
 					<section data-background="images/DockerVersions.png" data-background-size="contain"></section>
+					<section data-state="terminal"><terminal/> </section>
 				</section>
 
-				<section>
-					<section>
-						<h2>Dockerize UI - Robby</h2>
-					</section>
+				<section>					
+					<section><h2>Dockerize UI - Robby</h2></section>
                     <section>
-						<pre>
-							<code data-trim>
-docker run
+                        <pre>
+                            <code data-trim>docker run
 -d
 --rm
 --name intellij
 -e DISPLAY=10.0.75.1:0
--v //c/users/robby:/home/dev
+--volumes-from home
 joengenduvel/docker-intellij
 intellij
-						</code>
-						</pre>
+                            </code>
+                        </pre>
                     </section>
+                    <section data-state="terminal"><terminal/> </section>
+					<section data-background="images/boom.png" data-background-size="contain"></section>
+					<section>
+						<pre>
+							<code>
+docker exec -it intellij /bin/ash -c
+'cd IdeaProjects/iska.dockerize-the-world && npm start'
+							</code>
+						</pre>
+					</section>
 				</section>
 
-				<section>
+				<section>					
 					<h2>Linux Command Line Tools - Tom</h2>
 				</section>
 
-				<section>
+				<section>					
 					<h2>Docker Family, Sisters and Daughters - Robby</h2>
 					<p>Over Siblings en Dockerception</p>
 				</section>
 
-				<section>
+				<section>					
 					<h2>Mapped Volumes vs Volumes From - Robby</h2>
 				</section>
 
-				<section>
+				<section>					
 					<h2>Windows Container vs Linux Containers - Tom</h2>
 				</section>
 
-				<section>
+				<section>					
 					<h2>Build Server with Docker Compose - Robby</h2>
 				</section>
 			</div>
@@ -88,6 +113,7 @@ intellij
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				progress: false,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
@@ -97,6 +123,18 @@ intellij
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
+			Reveal.addEventListener( 'terminal', function() {
+    			Reveal.configure({ controls: true, keyboard: false, center: false });
+			}, false );
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				var dataState = event.previousSlide.getAttribute("data-state");
+				if(dataState === 'terminal') {
+					//undo configuration for terminals
+					Reveal.configure({ controls: true, keyboard: true, center: true });
+				}
+			} );
 		</script>
 	</body>
 </html>
