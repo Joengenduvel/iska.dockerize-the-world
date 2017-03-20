@@ -57,7 +57,21 @@
 				</section>
 
 				<section>					
-					<h2>Dockerize UI - Robby</h2>
+					<section><h2>Dockerize UI - Robby</h2></section>
+                    <section>
+                        <pre>
+                            <code data-trim>docker run
+-d
+--rm
+--name intellij
+-e DISPLAY=10.0.75.1:0
+-v //c/users/robby:/home/dev
+joengenduvel/docker-intellij
+intellij
+                            </code>
+                        </pre>
+                    </section>
+                    <section data-state="terminal"><terminal/> </section>
 				</section>
 
 				<section>					
