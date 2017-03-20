@@ -20,6 +20,23 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<link rel="stylesheet" href="css/terminal.css">
+		<script src="term.js"></script>
+		<script src="vertxshell.js"></script>
+		<script type="text/javascript">
+  			window.addEventListener('load', function () {
+				var url;
+				url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
+
+				var terminals = document.getElementsByTagName("terminal");
+				new VertxTerm(url, {
+				cols: 130,
+				rows: 22
+			    },
+				terminals[0]);
+			});
+		</script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -36,6 +53,7 @@
 					<section><h2>Docker Intro - Tom</h2></section>
 					<section>Basic Introduction</section>
 					<section data-background="images/DockerVersions.png" data-background-size="contain"></section>
+					<section data-state="terminal"><terminal/> </section>
 				</section>
 
 				<section>					
@@ -72,6 +90,7 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				progress: false,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
@@ -81,6 +100,18 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
+			Reveal.addEventListener( 'terminal', function() {
+    			Reveal.configure({ controls: true, keyboard: false, center: false });
+			}, false );
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				var dataState = event.previousSlide.getAttribute("data-state");
+				if(dataState === 'terminal') {
+					//undo configuration for terminals
+					Reveal.configure({ controls: true, keyboard: true, center: true });
+				}
+			} );
 		</script>
 	</body>
 </html>
