@@ -31,11 +31,13 @@
 				url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
 
 				var terminals = document.getElementsByTagName("terminal");
-				new VertxTerm(url, {
-				cols: 130,
-				rows: 22
-			    },
-				terminals[0]);
+				for(var i = 0; i<terminals.length; i++){
+                    new VertxTerm(url, {
+                            cols: 130,
+                            rows: 22
+                        },
+                        terminals[i]);
+				}
 			});
 		</script>
 	</head>
