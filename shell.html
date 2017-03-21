@@ -1,0 +1,20 @@
+<!doctype html>
+<title>Vert.x Shell</title>
+
+<h1>Vert.x Shell</h1>
+
+<link rel="stylesheet" href="css/terminal.css">
+<script src="term.js"></script>
+<script src="vertxshell.js"></script>
+
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+    var url;
+    url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
+    new VertxTerm(url, {
+      cols: 120,
+      rows: 36
+    });
+  });
+</script>
+
