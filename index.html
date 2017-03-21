@@ -31,11 +31,13 @@
 				url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
 
 				var terminals = document.getElementsByTagName("terminal");
-				new VertxTerm(url, {
-				cols: 130,
-				rows: 22
-			    },
-				terminals[0]);
+				for (i = 0; i < terminals.length; i++) { 
+    				new VertxTerm(url, {
+						cols: 130,
+						rows: 22
+			    	},
+					terminals[i])
+				};
 			});
 		</script>
 	</head>
@@ -99,6 +101,38 @@ docker exec -it intellij /bin/ash -c
 					<section>NPM, Angular CLI, Polymer CLI, Bower, <br>So many tools... so little time...</section>	
 					<section>
 						<h2>The Front-end Builder!</h2>
+						<p>
+							                            <code data-trim>docker run
+-d
+--rm
+--name frontend
+--volumes-from home
+joengenduvel/docker-intellij
+intellij
+                            </code>
+						</p>
+					</section>	
+					<section>
+						<h2>Using a tool:</h2>
+						<p>
+							<h2>CMD</h2>
+							<code data-trim>docker run -it -v %cd%/:/code/ docker-frontend-tools npm install</code>
+							<h2>Powershell</h2>
+							<code data-trim>docker run -it -v Get-Location/:/code/ docker-frontend-tools npm install</code>
+						</p>
+					</section>	
+					<section>
+						<h2>Script that stuff. fe.bat:</h2>
+						<p>
+							<code data-trim>echo off<br>
+								set arg1=%1<br>
+								set arg2=%2<br>
+								docker run -it -v %cd%/:/code/ docker-frontend-tools %arg1% %arg2% %*</code>
+						</p>
+						<h2>Run it:</h2>
+						<p>
+							<code data-trim>fe npm install</code>
+						</p>
 					</section>	
 					
 				</section>
