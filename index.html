@@ -108,18 +108,14 @@ docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.sn
                     <section>
 						<h2>Docker in Docker</h2>
                     </section>
-					<section>
-						<p>To the commandline</p>
-					</section>
+					<section data-state="terminal"><terminal/> </section>
 					<section data-background="images/docker-in-docker.jpg" data-background-size="contain"></section>
 					<section data-background="images/data-corruption.jpg" data-background-size="contain"></section>
 					<section data-background="images/what-else.jpg" data-background-size="contain"></section>
 					<section>
 						<h2>Siblings</h2>
 					</section>
-					<section>
-						<h2>To the commandline</h2>
-					</section>
+					<section data-state="terminal"><terminal/> </section>
 					<section>
 						<h2>Much Better</h2>
 						<ul>
@@ -133,16 +129,50 @@ docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.sn
 					</section>
 				</section>
 
-				<section>					
-					<h2>Mapped Volumes vs Volumes From - Robby</h2>
+				<section>
+					<section>
+						<h2>Mapped Volumes vs Volume Containers - Robby</h2>
+						<h3>Volume matters</h3>
+					</section>
+					<section>
+						<h2>Mapped Volumes</h2>
+						<pre>
+							<code data-trim>
+								docker run -it --rm -v //c/users/robby:/root alpine ls /root
+							</code>
+						</pre>
+					</section>
+					<section data-state="terminal"><terminal/> </section>
+					<section data-background="images/symlink.jpg" data-background-size="contain"></section>
+					<section>
+						<h2>Volume Containers</h2>
+						<pre>
+							<code data-trim>
+								docker create -v /root --name root-home alpine /bin/true
+								docker run -it --rm --volumes-from root-home alpine /bin/ash
+							</code>
+						</pre>
+					</section>
+					<section data-state="terminal"><terminal/> </section>
+					<section>
+						<h2>Delete All the things</h2>
+						<pre>
+							<code data-trim>
+								 docker rm root-home
+							</code>
+						</pre>
+					</section>
 				</section>
 
 				<section>					
 					<h2>Windows Container vs Linux Containers - Tom</h2>
 				</section>
 
-				<section>					
-					<h2>Build Server with Docker Compose - Robby</h2>
+				<section>
+					<section>
+						<h2>Build Server with Docker Compose - Robby</h2>
+					</section>
+					<section data-state="terminal"><terminal/> </section>
 				</section>
 			</div>
 		</div>
