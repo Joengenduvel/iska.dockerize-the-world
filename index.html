@@ -115,9 +115,11 @@ docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.sn
 					</section>	
 					<section>
 						<h2>Using a tool:</h2>
-						<p>
+						<p class="fragment">
 							<h2>CMD</h2>
 							<code data-trim>docker run -it -v %cd%/:/code/ docker-frontend-tools npm install</code>
+						</p>
+						<p class="fragment">
 							<h2>Powershell</h2>
 							<code data-trim>docker run -it -v Get-Location/:/code/ docker-frontend-tools npm install</code>
 						</p>
@@ -151,7 +153,7 @@ docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.sn
 						<h2>Step 3: Run command from favorite programming language</h2>
 						<img src="images/RunFromCode.PNG"/>
 					</section>
-					<section>
+					<section data-background="images/frankenstein.jpg">
 						<h2>Strange...but...familiar?</h2>
 						<img src="images/microservices.png"/>
 					</section>
