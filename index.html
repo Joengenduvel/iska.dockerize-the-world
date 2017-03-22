@@ -99,11 +99,27 @@ intellij
 					<section>
 						<h2>Why so serious?</h2>
 						<pre>
-							<code>
-docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.snes9x:/root/.snes9x -v /dev/shm:/dev/shm -v /run/dbus/:/run/dbus/:rw danniel/snes9x
+							<code>docker run
+-e DISPLAY=10.0.75.1:0
+-it
+-v //c/snes/roms:/root/roms
+-v /c/snes/.snes9x:/root/.snes9x 
+-v /dev/shm:/dev/shm 
+-v /run/dbus/:/run/dbus/:rw 
+danniel/snes9x
 							</code>
 						</pre>
 					</section>
+                    <section data-state="terminal"><terminal/> </section>
+					<section>
+						<h2>Tools Needed</h2>
+						<ul>
+							<li>docker</li>
+							<li>Xming</li>
+							<li>git</li>
+						</ul>
+					</section>
+					<section data-background="images/clean.png" data-background-size="contain"></section>
 				</section>
 
 				<section>		
