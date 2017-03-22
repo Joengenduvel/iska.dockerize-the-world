@@ -245,6 +245,49 @@ docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.sn
 									<li>...</li>
 							</ul>
 					</section>
+					<section data-background="images/docker-engine-linux.png" data-background-size="contain" data-background-color="#24b8eb">
+							<h2>Linux</h2>
+					</section>
+					<section>
+							<h2>Windows</h2>
+							<ul>
+									<li class="fragment">No native Namespacing in Kernel</li>
+									<li class="fragment">No cgroup in Kernel</li>
+									<li class="fragment">No containerd and runC concept</li>
+							</ul>
+					</section>
+					<section data-background="images/docker-engine-windows.png" data-background-size="contain" data-background-color="#24b8eb">
+							<h2>Windows Server 2016 / Windows 10</h2>
+					</section>
+					<section>
+								<blockquote style="background-color: rgba(0, 0, 0, 0.6);">
+									“Under Windows system, there is NO such concept primarily called “namespaces” compared to Linux. But very similar to what namespace does, there is a concept called “Silos” – extension to so called “Windows Job objects.” – set of processes which you can assign or limit the resource control. ”
+								</blockquote>
+					</section>
+					<section>
+						<h2>But it's just not enough</h2>
+						<ul>
+									<li class="fragment">Shared kernel -> multi-tenant</li>
+									<li class="fragment">Dependency on the host OS
+										<ul>
+											<li>System call mechanism not documented</li>
+											<li>System call mechanism not guaranteed consistent</li>
+										</ul>
+									</li>
+							</ul>
+					</section>
+					<section data-background="images/microsoftcontainers.jpg" data-background-size="contain">
+					</section>
+					<section>
+						<h2 class="fragment">Windows Server containers</h2>
+						<blockquote class="fragment" style="background-color: rgba(0, 0, 0, 0.6);">Some isolation. Shared Kernel.</blockquote>
+						<h2 class="fragment">Hyper-V containers</h2>
+						<blockquote class="fragment" style="background-color: rgba(0, 0, 0, 0.6);">Each container is a virtual machine. Kernel level isolation.</blockquote>
+					</section>
+					<section>
+						<h2>Type is chosen at "docker run"-time</h2>
+						<blockquote class="fragment" style="background-color: rgba(0, 0, 0, 0.6);">docker run -it --isolation=hyperv microsoft/nanoserver cmd</blockquote>
+					</section>
 				</section>
 
 				<section>
