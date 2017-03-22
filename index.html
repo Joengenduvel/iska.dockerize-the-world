@@ -84,7 +84,10 @@ intellij
                             </code>
                         </pre>
                     </section>
-                    <section data-state="terminal"><terminal/> </section>
+                    <section data-state="terminal">
+						<terminal/>
+						<aside class="notes">docker run -d --rm --name intellij -e DISPLAY=10.0.75.1:0 --volumes-from home joengenduvel/docker-intellij intellij</aside>
+					</section>
 					<section data-background="images/mind-blown.gif" data-background-size="stretch"></section>
 					<section>
 						<h2>History lessons</h2>
@@ -110,7 +113,10 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-                    <section data-state="terminal"><terminal/> </section>
+                    <section data-state="terminal">
+					<terminal/> 
+					<aside class="notes">docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.snes9x:/root/.snes9x -v /dev/shm:/dev/shm -v /run/dbus/:/run/dbus/:rw danniel/snes9x</aside>
+					</section>
 					<section>
 						<h2>Tools Needed</h2>
 						<ul>
@@ -190,7 +196,13 @@ danniel/snes9x
 							</code>
 						</pre>
                     </section>
-					<section data-state="terminal"><terminal/> </section>
+					<section data-state="terminal">
+					<terminal/>
+					<aside class="notes">
+					docker run --privileged -t -i jpetazzo/dind
+					docker run hello-world
+					</aside>
+					</section>
 					<section data-background="images/docker-in-docker.jpg" data-background-size="contain"></section>
 					<section data-background="images/data-corruption.jpg" data-background-size="contain"></section>
 					<section data-background="images/what-else.jpg" data-background-size="contain"></section>
@@ -198,12 +210,18 @@ danniel/snes9x
 						<h2>Siblings</h2>
 						<pre>
 							<code data-trim>
-								docker run --privileged -t -i jpetazzo/dind
+								docker run -v /var/run/docker.sock:/var/run/docker.sock docker /bin/ash
 								docker run hello-world
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/> </section>
+					<section data-state="terminal">
+					<terminal/>
+					<aside class="notes">
+						docker run -it -v /var/run/docker.sock:/var/run/docker.sock docker /bin/ash
+						docker run hello-world
+					</aside>
+					</section>
 					<section>
 						<h2>Much Better</h2>
 						<ul>
@@ -230,7 +248,11 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/> </section>
+					<section data-state="terminal"><terminal/>
+					<aside class="notes">
+						docker run -it --rm -v //c/users/robby:/root alpine ls /root
+					</aside>
+					</section>
 					<section data-background="images/symlink.jpg" data-background-size="contain"></section>
 					<section>
 						<h2>Volume Containers</h2>
@@ -241,7 +263,12 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/> </section>
+					<section data-state="terminal"><terminal/>
+					<aside class="notes">
+						docker create -v /root --name root-home alpine /bin/true
+						docker run -it --rm --volumes-from root-home alpine /bin/ash
+					</aside>
+					</section>
 					<section>
 						<h2>Delete All the things</h2>
 						<pre>
@@ -249,6 +276,11 @@ danniel/snes9x
 								 docker rm root-home
 							</code>
 						</pre>
+					</section>
+					<section data-state="terminal"><terminal/>
+					<aside class="notes">
+						docker rm root-home
+					</aside>
 					</section>
 				</section>
 
