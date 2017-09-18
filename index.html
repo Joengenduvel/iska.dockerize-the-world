@@ -36,6 +36,7 @@
 				
 				<section>
 					<section data-background="images/docker-wallpaper-black.jpg" data-background-size="contain"></section>
+					<section data-background="images/ContainerVsVM-1024x567.png" data-background-size="contain"></section>
 					<section data-background="images/kitematic.png" data-background-size="contain" data-background-color="#24b8eb">
 					</section>
 					<section data-background="images/docker-orchestration.jpg" data-background-size="contain">
@@ -53,17 +54,10 @@
 				</section>
 
 				<section>					
-					<section><h2>Dockerize UI - Robby</h2></section>
+					<section><h2>Dockerize UI</h2></section>
                     <section>
                         <pre>
-                            <code data-trim>docker run
--d
---rm
---name intellij
--e DISPLAY=10.0.75.1:0
---volumes-from home
-joengenduvel/docker-intellij
-intellij
+                            <code data-trim>docker run -d vscode
                             </code>
                         </pre>
                     </section>
@@ -159,7 +153,7 @@ danniel/snes9x
 
 				<section>
                     <section>
-                        <h2>Docker Family, Sisters and Daughters - Robby</h2>
+                        <h2>Docker Family, Sisters and Daughters</h2>
                         <p>Over Siblings en Dockerception</p>
                     </section>
                     <section>
@@ -200,7 +194,7 @@ danniel/snes9x
 
 				<section>
 					<section>
-						<h2>Mapped Volumes vs Volume Containers - Robby</h2>
+						<h2>Mapped Volumes vs Volume Containers</h2>
 						<h3>Volume matters</h3>
 					</section>
 					<section>
@@ -240,8 +234,13 @@ danniel/snes9x
 					</section>
 
 					<section  data-background="images/windowsservercore.png" data-background-size="contain">
-							<h2 style="color: royalblue">First Experience with Windows Containers</h2>
+						<h2 style="color: royalblue">First Experience with Windows Containers</h2>
 					</section>
+					<section  data-background="images/image-sizes-full.PNG" data-background-size="contain">
+					</section>
+					<section  data-background="images/image-sizes-reduced.PNG" data-background-size="contain">
+					</section>
+
 					<section data-background="images/nanoserver.jpg">
 							<blockquote cite="https://hub.docker.com/r/microsoft/nanoserver/">
 								“Nano Server is a new headless deployment option for Windows Server, running at a fraction of the size of the full operating system.”
@@ -302,7 +301,14 @@ danniel/snes9x
 
 				<section>
 					<section>
-						<h2>Build Server with Docker Compose - Robby</h2>
+						<h2>Wordpress with Docker Compose</h2>
+					</section>
+					<section>
+						<pre>
+							<code data-trim>
+								docker-compose up
+							</code>
+						</pre>
 					</section>
 				</section>
 			</div>
