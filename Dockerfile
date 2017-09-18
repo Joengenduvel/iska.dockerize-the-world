@@ -1,7 +1,8 @@
-FROM node:4-alpine
+FROM joengenduvel/docker-development-tools
 
-ADD . .
+ADD . /root
+RUN cd /root && rm -rf node_modules && npm install
 
-CMD npm start
+CMD cd /root && npm start
 
 EXPOSE 8000
