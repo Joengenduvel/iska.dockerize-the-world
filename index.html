@@ -7,7 +7,7 @@
 		<title>Dockerize The World</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="css/reveal.js-theme-infosupport/infosupport.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -21,25 +21,7 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
-		<link rel="stylesheet" href="css/terminal.css">
-		<script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-		<script src="term.js"></script>
-		<script src="vertxshell.js"></script>
-		<script type="text/javascript">
-  			window.addEventListener('load', function () {
-				var url;
-				url = location.protocol.replace('file', 'ws') + '//' + 'localhost:8080' + '/shell/websocket';
 
-				var terminals = document.getElementsByTagName("terminal");
-				for (i = 0; i < terminals.length; i++) { 
-    				new VertxTerm(url, {
-						cols: 130,
-						rows: 22
-			    	},
-					terminals[i])
-				};
-			});
-		</script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -48,13 +30,12 @@
 					<h1>Dockerize The World</h1>
 					<h3>Thinking outside the box, inside containers</h3>
 					<p>
-						<small>Robby & Tom</small>
+						<small>Robby Decosemaeker</small>
 					</p>
 				</section>
 				
 				<section>
 					<section data-background="images/docker-wallpaper-black.jpg" data-background-size="contain"></section>
-					<section data-state="terminal"><terminal/></section>
 					<section data-background="images/kitematic.png" data-background-size="contain" data-background-color="#24b8eb">
 					</section>
 					<section data-background="images/docker-orchestration.jpg" data-background-size="contain">
@@ -64,7 +45,7 @@
 					<section data-background="images/ducp_dashboard.png" data-background-size="contain"></section>
 					<section data-background="images/trusted.png" data-background-size="contain"></section>
 					<section data-background="images/up.jpg" data-background-size="100%">
-						<blockquote style="background-color: rgba(0, 0, 0, 0.6);">
+						<blockquote style="background-color: rgba(0, 0, 0, 0.6); color:white;">
 							“If you have a crazy idea, find a cheap way to try it anyway. You may end up with something awesome nobody ever bothered trying.”
 						</blockquote>
 					</section>
@@ -86,10 +67,6 @@ intellij
                             </code>
                         </pre>
                     </section>
-                    <section data-state="terminal">
-						<terminal/>
-						<aside class="notes">docker run -d --rm --name intellij -e DISPLAY=10.0.75.1:0 --volumes-from home joengenduvel/docker-intellij intellij</aside>
-					</section>
 					<section data-background="images/mind-blown.gif" data-background-size="stretch"></section>
 					<section>
 						<h2>History lessons</h2>
@@ -115,11 +92,7 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-                    <section data-state="terminal">
-					<terminal/> 
-					<aside class="notes">docker run -e DISPLAY=10.0.75.1:0 -it -v //c/snes/roms:/root/roms -v /c/snes/.snes9x:/root/.snes9x -v /dev/shm:/dev/shm -v /run/dbus/:/run/dbus/:rw danniel/snes9x</aside>
-					</section>
-					<section>
+                    <section>
 						<h2>Tools Needed</h2>
 						<ul>
 							<li>docker</li>
@@ -198,13 +171,7 @@ danniel/snes9x
 							</code>
 						</pre>
                     </section>
-					<section data-state="terminal">
-					<terminal/>
-					<aside class="notes">
-					docker run --privileged -t -i jpetazzo/dind
-					docker run hello-world
-					</aside>
-					</section>
+
 					<section data-background="images/docker-in-docker.jpg" data-background-size="contain"></section>
 					<section data-background="images/data-corruption.jpg" data-background-size="contain"></section>
 					<section data-background="images/what-else.jpg" data-background-size="contain"></section>
@@ -217,13 +184,7 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal">
-					<terminal/>
-					<aside class="notes">
-						docker run -it -v /var/run/docker.sock:/var/run/docker.sock docker /bin/ash
-						docker run hello-world
-					</aside>
-					</section>
+
 					<section>
 						<h2>Much Better</h2>
 						<ul>
@@ -250,11 +211,7 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/>
-					<aside class="notes">
-						docker run -it --rm -v //c/users/robby:/root alpine ls /root
-					</aside>
-					</section>
+
 					<section data-background="images/symlink.jpg" data-background-size="contain"></section>
 					<section>
 						<h2>Volume Containers</h2>
@@ -265,12 +222,7 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/>
-					<aside class="notes">
-						docker create -v /root --name root-home alpine /bin/true
-						docker run -it --rm --volumes-from root-home alpine /bin/ash
-					</aside>
-					</section>
+
 					<section>
 						<h2>Delete All the things</h2>
 						<pre>
@@ -279,11 +231,7 @@ danniel/snes9x
 							</code>
 						</pre>
 					</section>
-					<section data-state="terminal"><terminal/>
-					<aside class="notes">
-						docker rm root-home
-					</aside>
-					</section>
+
 				</section>
 
 				<section>
@@ -356,7 +304,6 @@ danniel/snes9x
 					<section>
 						<h2>Build Server with Docker Compose - Robby</h2>
 					</section>
-					<section data-state="terminal"><terminal/> </section>
 				</section>
 			</div>
 		</div>
@@ -378,18 +325,6 @@ danniel/snes9x
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
-
-			Reveal.addEventListener( 'terminal', function() {
-    			Reveal.configure({ controls: true, keyboard: false, center: false });
-			}, false );
-			Reveal.addEventListener( 'slidechanged', function( event ) {
-				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
-				var dataState = event.previousSlide.getAttribute("data-state");
-				if(dataState === 'terminal') {
-					//undo configuration for terminals
-					Reveal.configure({ controls: true, keyboard: true, center: true });
-				}
-			} );
 		</script>
 	</body>
 </html>
